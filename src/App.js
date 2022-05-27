@@ -1,13 +1,13 @@
 import AppShell from "./components/AppShell";
-import Home from "./components/Home";
-import LogIn from "./components/LogIn";
+import PageHome from "./pages/PageHome";
+import PageLogIn from "./pages/PageLogIn";
 
 function App() {
   return (
     <div>
       <AppShell />
-      <Home />
-      <LogIn />
+      <PageHome />
+      <PageLogIn />
     </div>
   );
 }
