@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
@@ -104,9 +103,6 @@ const AppShell = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
-            <MenuIcon />
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
