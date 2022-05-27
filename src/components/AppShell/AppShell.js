@@ -118,11 +118,7 @@ const AppShell = () => {
             <StyledInputBase placeholder="Search…" />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          {user ? (
-            <div>Welcome back, {user.displayName}</div>
-          ) : (
-            <div>Please log in</div>
-          )}
+          {user ? <div>Welcome back, {user.displayName}</div> : <div></div>}
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
