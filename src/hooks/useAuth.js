@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import React, { useState, useEffect, useContext, createContext } from "react";
-import { firebaseConfig } from "../config/firebaseConfig";
+import { firebaseConfig } from "../config/firebaseConfig.js";
 
 // Code edited from https://usehooks.com/useAuth/ and
 // https://firebase.google.com/docs/auth/web/start#add-initialize-sdk
@@ -14,6 +14,8 @@ const app = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(app);
 
 const authContext = createContext();
+
+const googleAuthProvider = new GoogleAuthProvider();
 
 // Provider component that wraps your app and makes auth object ...
 // ... available to any child component that calls useAuth().
@@ -70,6 +72,10 @@ function useProvideAuth() {
     });
   };
 
+  const signInWithGoogle = () => {
+    return signInWithPopup(firebaseAuth, googleAuthProvider);
+  };
+
   // Subscribe to user on mount
   // Because this sets state in the callback it will cause any ...
   // ... component that utilizes this hook to re-render with the ...
@@ -95,5 +101,6 @@ function useProvideAuth() {
     signout,
     sendPasswordResetEmail,
     confirmPasswordReset,
+    signInWithGoogle,
   };
 }
