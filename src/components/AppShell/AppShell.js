@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import { useAuth } from "../../hooks/useAuth.js";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -54,22 +55,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const AppShell = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const { signInWithGoogle, user, signout } = useAuth();
 
-  const isMenuOpen = Boolean(anchorEl);
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const isMenuOpen = Boolean(openMenu);
 
   const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+    setOpenMenu(event.currentTarget);
   };
 
   const handleMenuClose = () => {
-    setAnchorEl(null);
+    setOpenMenu(null);
   };
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
-      anchorEl={anchorEl}
+      openMenu={openMenu}
       anchorOrigin={{
         vertical: "top",
         horizontal: "right",
@@ -83,8 +86,17 @@ const AppShell = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      {user ? (
+        <>
+          <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+          <MenuItem onClick={signout}>Logout</MenuItem>
+        </>
+      ) : (
+        <>
+          <MenuItem onClick={signInWithGoogle}>Login</MenuItem>
+          <MenuItem onClick={handleMenuClose}>Sign Up</MenuItem>
+        </>
+      )}
     </Menu>
   );
 
@@ -92,13 +104,7 @@ const AppShell = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
+          <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
           <Typography
@@ -113,19 +119,13 @@ const AppShell = () => {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
+            <StyledInputBase placeholder="Search…" />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
               edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
@@ -133,12 +133,7 @@ const AppShell = () => {
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-haspopup="true"
-              color="inherit"
-            >
+            <IconButton size="large" color="inherit">
               <MoreIcon />
             </IconButton>
           </Box>
