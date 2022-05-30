@@ -13,6 +13,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import ForumIcon from "@mui/icons-material/Forum";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import { Tooltip } from "@mui/material";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth.js";
 import { NavLink } from "react-router-dom";
@@ -180,7 +181,12 @@ const AppShell = () => {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            NUSFoods WebApp
+            <NavLink
+              to="/"
+              style={{ textDecoration: "inherit", color: "inherit" }}
+            >
+              NUSFoods WebApp
+            </NavLink>
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -195,47 +201,52 @@ const AppShell = () => {
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {user ? (
               <>
-                <IconButton
-                  size="large"
-                  aria-label="open reviews forum page"
-                  color="inherit"
-                >
-                  <NavLink
-                    to="/forum"
-                    style={{ textDecoration: "inherit", color: "inherit" }}
+                <Tooltip title="Forums">
+                  <IconButton
+                    size="large"
+                    aria-label="open reviews forum page"
+                    color="inherit"
                   >
-                    <ForumIcon />
-                  </NavLink>
-                </IconButton>
+                    <NavLink
+                      to="/forum"
+                      style={{ textDecoration: "inherit", color: "inherit" }}
+                    >
+                      <ForumIcon />
+                    </NavLink>
+                  </IconButton>
+                </Tooltip>
 
-                <IconButton
-                  size="large"
-                  aria-label="open deals and discounts"
-                  color="inherit"
-                >
-                  <NavLink
-                    to="/deals"
-                    style={{ textDecoration: "inherit", color: "inherit" }}
+                <Tooltip title="Deals">
+                  <IconButton
+                    size="large"
+                    aria-label="open deals and discounts"
+                    color="inherit"
                   >
-                    <LocalOfferIcon />
-                  </NavLink>
-                </IconButton>
+                    <NavLink
+                      to="/deals"
+                      style={{ textDecoration: "inherit", color: "inherit" }}
+                    >
+                      <LocalOfferIcon />
+                    </NavLink>
+                  </IconButton>
+                </Tooltip>
               </>
             ) : (
               <></>
             )}
-
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            <Tooltip title="View profile">
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Tooltip>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
