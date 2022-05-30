@@ -200,7 +200,12 @@ const AppShell = () => {
                   aria-label="open reviews forum page"
                   color="inherit"
                 >
-                  <ForumIcon />
+                  <NavLink
+                    to="/forum"
+                    style={{ textDecoration: "inherit", color: "inherit" }}
+                  >
+                    <ForumIcon />
+                  </NavLink>
                 </IconButton>
 
                 <IconButton
@@ -208,7 +213,12 @@ const AppShell = () => {
                   aria-label="open deals and discounts"
                   color="inherit"
                 >
-                  <LocalOfferIcon />
+                  <NavLink
+                    to="/deals"
+                    style={{ textDecoration: "inherit", color: "inherit" }}
+                  >
+                    <LocalOfferIcon />
+                  </NavLink>
                 </IconButton>
               </>
             ) : (

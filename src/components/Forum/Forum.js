@@ -1,4 +1,4 @@
-import styles from "./Home.module.css";
+import styles from "./Forum.module.css";
 import placeholder from "../../assets/forum-placeholder.png";
 
 const Forum = () => {
