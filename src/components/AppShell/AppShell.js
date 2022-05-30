@@ -171,7 +171,7 @@ const AppShell = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar style={{ background: "#31525b" }} position="static">
         <Toolbar>
           <IconButton
             size="large"
