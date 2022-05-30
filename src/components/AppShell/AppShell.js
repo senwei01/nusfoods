@@ -12,6 +12,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useAuth } from "../../hooks/useAuth.js";
+import { NavLink } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -87,13 +88,38 @@ const AppShell = () => {
     >
       {user ? (
         <>
-          <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-          <MenuItem onClick={signout}>Logout</MenuItem>
+          <MenuItem>
+            <NavLink
+              to="/"
+              style={{ textDecoration: "inherit", color: "inherit" }}
+              onClick={handleMenuClose}
+            >
+              Home
+            </NavLink>
+          </MenuItem>
+          <MenuItem>
+            <NavLink
+              to="/profile"
+              style={{ textDecoration: "inherit", color: "inherit" }}
+              onClick={handleMenuClose}
+            >
+              Profile
+            </NavLink>
+          </MenuItem>
+          <MenuItem>
+            <NavLink
+              to="/"
+              style={{ textDecoration: "inherit", color: "inherit" }}
+              onClick={signout}
+            >
+              Logout
+            </NavLink>
+          </MenuItem>
         </>
       ) : (
         <>
           <MenuItem onClick={signInWithGoogle}>Login</MenuItem>
-          <MenuItem onClick={handleMenuClose}>Sign Up</MenuItem>
+          {/* <MenuItem onClick={handleMenuClose}>Sign Up</MenuItem> */}
         </>
       )}
     </Menu>
