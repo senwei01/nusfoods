@@ -1,16 +1,12 @@
 import styles from "./Home.module.css";
-import placeholder from "../../assets/home-placeholder.png";
+import placeholder from "../../assets/forum-placeholder.png";
 
-const Home = () => {
+const Forum = () => {
   return (
     <div>
-      <img
-        src={placeholder}
-        alt="Please Log In"
-        className={styles.Center}
-      ></img>
+      <img src={placeholder} alt="Forum" className={styles.Center}></img>
     </div>
   );
 };
 
-export default Home;
+export default Forum;
