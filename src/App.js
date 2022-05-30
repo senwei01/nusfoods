@@ -1,7 +1,9 @@
 import AppShell from "./components/AppShell";
 import PageHome from "./pages/PageHome";
 import PageLogIn from "./pages/PageLogIn";
+import PageProfile from "./pages/PageProfile";
 import { useAuth } from "./hooks/useAuth";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const { user } = useAuth();
@@ -9,7 +11,10 @@ function App() {
   return (
     <div>
       <AppShell />
-      <body>{user ? <PageHome /> : <PageLogIn />}</body>
+      <Routes>
+        <Route path="/" element={user ? <PageHome /> : <PageLogIn />} />
+        <Route path="profile" element={<PageProfile />} />
+      </Routes>
     </div>
   );
 }
