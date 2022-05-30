@@ -8,10 +8,11 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import ForumIcon from "@mui/icons-material/Forum";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth.js";
 import { NavLink } from "react-router-dom";
@@ -173,15 +174,6 @@ const AppShell = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar style={{ background: "#31525b" }} position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
@@ -201,6 +193,28 @@ const AppShell = () => {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            {user ? (
+              <>
+                <IconButton
+                  size="large"
+                  aria-label="open reviews forum page"
+                  color="inherit"
+                >
+                  <ForumIcon />
+                </IconButton>
+
+                <IconButton
+                  size="large"
+                  aria-label="open deals and discounts"
+                  color="inherit"
+                >
+                  <LocalOfferIcon />
+                </IconButton>
+              </>
+            ) : (
+              <></>
+            )}
+
             <IconButton
               size="large"
               edge="end"
