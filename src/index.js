@@ -3,13 +3,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ProvideAuth } from "./hooks/useAuth";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <CssBaseline />
-    <ProvideAuth>
-      <App />
-    </ProvideAuth>
+    <BrowserRouter>
+      <CssBaseline />
+      <ProvideAuth>
+        <App />
+      </ProvideAuth>
+    </BrowserRouter>
   </React.StrictMode>
 );
