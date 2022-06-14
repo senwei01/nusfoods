@@ -185,7 +185,7 @@ const AppShell = () => {
               to="/"
               style={{ textDecoration: "inherit", color: "inherit" }}
             >
-              NUSFoods WebApp
+              NUSFoods
             </NavLink>
           </Typography>
           <Search>
